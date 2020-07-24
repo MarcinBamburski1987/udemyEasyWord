@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WordsService } from '../../services/words.service';
+import { WordType } from '../../data/models';
 
 @Component({
   selector: 'app-question',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor() { }
+  word: WordType = null;
+
+  constructor(private wordsService: WordsService) { }
 
   ngOnInit(): void {
+    this.fetchWord();
+  }
+  private fetchWord(): void{
+    this.word = this.wordsService.getWords().shift();
   }
 
 }
