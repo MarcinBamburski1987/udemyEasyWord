@@ -16,6 +16,21 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
     this.fetchWord();
   }
+
+  addToNouns(word: WordType): void{
+    this.wordsService.addNoun(word);
+    this.fetchWord();
+  }
+
+  addToVerb(verb: WordType): void{
+    this.wordsService.addVerb(verb);
+    this.fetchWord()
+  }
+
+  check(): void{
+    this.wordsService.check();
+  }
+
   private fetchWord(): void{
     this.word = this.wordsService.getWords().shift();
   }
